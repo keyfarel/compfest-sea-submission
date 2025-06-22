@@ -3,4 +3,4 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\WelcomeDashboard;
 
-Route::get('/', WelcomeDashboard::class);
+Route::get('/welcome', WelcomeDashboard::class);

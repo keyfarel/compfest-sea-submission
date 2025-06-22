@@ -1,0 +1,9 @@
+.menu > li > a:active,
+.menu > li > a:focus,
+.menu > li > a:focus-visible {
+    background-color: transparent !important;
+}
+
+.menu > li > a:active {
+    color: black !important;
+}

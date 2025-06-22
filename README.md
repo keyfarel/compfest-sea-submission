@@ -24,6 +24,9 @@ Pastikan Anda sudah memiliki PHP, Composer, dan Node.js/NPM di lingkungan Anda.
 1. **Clone Repositori**
    ```bash
    git clone [https://github.com/keyfarel/compfest-sea-submission.git](https://github.com/keyfarel/compfest-sea-submission.git)
+   ```
+
+    ```bash
    cd compfest-sea-submission
    ```
 

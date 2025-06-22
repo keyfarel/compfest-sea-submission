@@ -9,7 +9,13 @@
 </head>
 <body class="antialiased">
 
-{{ $slot }}
+<div class="flex flex-col min-h-screen">
+    <x-layouts.header.index/>
+    <main class="flex-grow">
+        {{ $slot }}
+    </main>
+    <x-layouts.footer.index/>
+</div>
 
 @livewireScripts
 </body>
