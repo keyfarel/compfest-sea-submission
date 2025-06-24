@@ -9,12 +9,18 @@
 </head>
 <body class="antialiased">
 
+<!-- Layout Container -->
 <div class="flex flex-col min-h-screen">
-    <x-layouts.header.index/>
+    <!-- Navigation Bar -->
+    <x-app.header.index/>
+
+    <!-- Main Content -->
     <main class="flex-grow">
         {{ $slot }}
     </main>
-    <x-layouts.footer.index/>
+
+    <!-- Footer -->
+    <x-app.footer.index/>
 </div>
 
 @livewireScripts

@@ -1,8 +1,9 @@
 <?php
 
-use  App\Livewire\Frontend\Pages\Welcome;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\WelcomeDashboard;
 
-Route::get('/', Welcome::class);
-Route::get('/welcome', WelcomeDashboard::class);
+Route::view('/', 'pages.home')->name('home');
+Route::view('/contact', 'pages.contact')->name('contact');
+Route::view('/menu', 'pages.menu')->name('menu');
+Route::view('/subscription', 'pages.subscription')->name('subscription');
+Route::view('/testimoni', 'pages.testimoni')->name('testimoni');
