@@ -6,7 +6,7 @@
             across Indonesia. Nutritious, delicious, and convenient.</p>
         <div class="mb-10">
             <img
-                src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="{{ asset('storage/home/healthy-salad.webp') }}"
                 alt="Healthy Salad Bowl"
                 class="w-48 h-48 rounded-full object-cover inline-block shadow-lg border-4 border-slate-700">
         </div>

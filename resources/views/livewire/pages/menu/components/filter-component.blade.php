@@ -1,10 +1,5 @@
-{{-- [FINAL] Satu Filter Cerdas untuk Semua Ukuran Layar --}}
-<div
-    x-data="scrollableFilter()"
-    x-init="init()"
-    class="relative mb-12">
+<div x-data="scrollableFilter()" x-init="init()" class="relative mb-12">
 
-    {{-- Tombol Panah Kiri --}}
     <button
         x-show="isScrollable && canScrollLeft"
         x-on:click="scrollLeft()"
@@ -15,36 +10,28 @@
         </svg>
     </button>
 
-    {{-- Kontainer yang bisa di-scroll --}}
-    <div
-        x-ref="content"
-        x-on:scroll.debounce.100ms="updateArrows()"
-        :class="isScrollable ? 'justify-start' : 'justify-center'"
-        class="no-scrollbar flex items-center overflow-x-auto">
+    <div x-ref="content" x-on:scroll.debounce.100ms="updateArrows()"
+         :class="isScrollable ? 'justify-start' : 'justify-center'"
+         class="no-scrollbar flex items-center overflow-x-auto">
 
-        {{-- Grup tombol --}}
-        <div class="inline-flex items-center space-x-2 p-1 bg-gray-100 rounded-lg">
-            {{-- Tombol-tombol filter statis untuk tampilan --}}
-            <button
-                class="px-5 py-2 text-sm font-semibold text-white bg-green-600 rounded-md shadow-sm flex-shrink-0">
-                All
-            </button>
-            <button
-                class="px-5 py-2 text-sm font-semibold text-gray-600 hover:bg-white/60 hover:text-gray-900 rounded-md flex-shrink-0">
-                Individual
-            </button>
-            <button
-                class="px-5 py-2 text-sm font-semibold text-gray-600 hover:bg-white/60 hover:text-gray-900 rounded-md flex-shrink-0">
-                Family
-            </button>
-            <button
-                class="px-5 py-2 text-sm font-semibold text-gray-600 hover:bg-white/60 hover:text-gray-900 rounded-md flex-shrink-0">
-                Specialized
-            </button>
-        </div>
+        <fieldset wire:loading.attr="disabled" wire:target="selectCategory"
+                  class="inline-flex items-center space-x-2 p-1 bg-gray-100 rounded-lg">
+
+            @foreach ($this->categories as $category)
+                <button
+                    wire:click="selectCategory('{{ $category['key'] }}')"
+                    class="px-5 py-2 text-sm font-semibold rounded-md shadow-sm flex-shrink-0 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    :class="{
+                    'bg-green-600 text-white': '{{ $this->activeCategory }}' === '{{ $category['key'] }}',
+                    'text-gray-600 hover:bg-white/60 hover:text-gray-900': '{{ $this->activeCategory }}' !== '{{ $category['key'] }}'
+                }">
+                    {{ $category['name'] }}
+                </button>
+            @endforeach
+
+        </fieldset>
     </div>
 
-    {{-- Tombol Panah Kanan --}}
     <button
         x-show="isScrollable && canScrollRight"
         x-on:click="scrollRight()"
@@ -56,7 +43,6 @@
     </button>
 </div>
 
-{{-- Script Alpine.js "hidup" bersama dengan HTML-nya di dalam komponen ini --}}
 @push('scripts')
     <script>
         function scrollableFilter() {
