@@ -1,35 +1,39 @@
-<!-- Desktop Menu -->
 <div class="navbar-center hidden lg:flex">
-    <!-- Main Navigation Menu -->
+    @php
+        $activeClasses = 'text-green-600 font-semibold underline';
+        $inactiveClasses = 'text-neutral-800 hover:text-green-600 hover:underline';
+        $commonClasses = 'hover:bg-transparent decoration-gray-400 decoration-2 underline-offset-4 transition-colors duration-300';
+    @endphp
+
     <ul class="menu menu-horizontal px-1 font-medium">
         <li>
             <a href="{{ route('home') }}"
-               class="text-neutral-800 hover:text-neutral-600 active:text-black hover:bg-transparent active:bg-transparent hover:underline decoration-gray-400 decoration-2 underline-offset-4 transition-colors duration-300">
-               Home
+               class="{{ request()->routeIs('home') ? $activeClasses : $inactiveClasses }} {{ $commonClasses }}" wire:navigate>
+                Home
             </a>
         </li>
         <li>
             <a href="{{ route('menu') }}"
-               class="text-neutral-800 hover:text-neutral-600 active:text-black hover:bg-transparent active:bg-transparent hover:underline decoration-gray-400 decoration-2 underline-offset-4 transition-colors duration-300">
-               Menu
+               class="{{ request()->routeIs('menu*') ? $activeClasses : $inactiveClasses }} {{ $commonClasses }}" wire:navigate>
+                Menu
             </a>
         </li>
         <li>
             <a href="{{ route('testimoni') }}"
-               class="text-neutral-800 hover:text-neutral-600 active:text-black hover:bg-transparent active:bg-transparent hover:underline decoration-gray-400 decoration-2 underline-offset-4 transition-colors duration-300">
-               Testimonials
+               class="{{ request()->routeIs('testimoni*') ? $activeClasses : $inactiveClasses }} {{ $commonClasses }}" wire:navigate>
+                Testimonials
             </a>
         </li>
         <li>
             <a href="{{ route('subscription') }}"
-               class="text-neutral-800 hover:text-neutral-600 active:text-black hover:bg-transparent active:bg-transparent hover:underline decoration-gray-400 decoration-2 underline-offset-4 transition-colors duration-300">
-               Subscription
+               class="{{ request()->routeIs('subscription*') ? $activeClasses : $inactiveClasses }} {{ $commonClasses }}" wire:navigate>
+                Subscription
             </a>
         </li>
         <li>
             <a href="{{ route('contact') }}"
-               class="text-neutral-800 hover:text-neutral-600 active:text-black hover:bg-transparent active:bg-transparent hover:underline decoration-gray-400 decoration-2 underline-offset-4 transition-colors duration-300">
-               Contact Us
+               class="{{ request()->routeIs('contact') ? $activeClasses : $inactiveClasses }} {{ $commonClasses }}" wire:navigate>
+                Contact Us
             </a>
         </li>
     </ul>

@@ -1,3 +1,3 @@
 <x-layouts.app>
-    <p>Ini Halaman Subcription</p>
+    <livewire:pages.subscription.header-section />
 </x-layouts.app>

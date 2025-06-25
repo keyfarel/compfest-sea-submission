@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Home;
+namespace App\Livewire\Pages\Home;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class FeaturesSection extends Component
 {
     public function render()
     {
-        return view('livewire.home.features-section');
+        return view('livewire.pages.home.features-section');
     }
 }

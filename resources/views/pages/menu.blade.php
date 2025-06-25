@@ -1,3 +1,4 @@
 <x-layouts.app>
-    <p>Ini Halaman Menu</p>
+    <livewire:pages.menu.header-section/>
+    <livewire:pages.menu.meal-plan-section/>
 </x-layouts.app>

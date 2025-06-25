@@ -1,4 +1,5 @@
 @import "components/menu.css";
+@import "components/scrollbar.css";
 
 @tailwind base;
 @tailwind components;
