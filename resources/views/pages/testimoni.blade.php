@@ -1,4 +1,5 @@
 <x-layouts.app>
     <livewire:pages.testimoni.header-section />
-    <p>Ini Halaman Testimoni</p>
+    <livewire:pages.testimoni.testimonials-section />
+    <livewire:pages.testimoni.form-section />
 </x-layouts.app>

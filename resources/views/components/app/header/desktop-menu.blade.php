@@ -1,7 +1,7 @@
 <div class="navbar-center hidden lg:flex">
     @php
         $activeClasses = 'text-green-600 font-semibold underline';
-        $inactiveClasses = 'text-neutral-800 hover:text-green-600 hover:underline';
+        $inactiveClasses = 'text-neutral-800 hover:text-green-600 ';
         $commonClasses = 'hover:bg-transparent decoration-gray-400 decoration-2 underline-offset-4 transition-colors duration-300';
     @endphp
 
