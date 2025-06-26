@@ -7,7 +7,7 @@
     <div wire:loading.class.delay="opacity-50"
          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 m-4 justify-items-center">
         @forelse($plansToShow as $plan)
-            <x-pages.menu.meal-plan-card :plan="$plan" :key="'plan-'.$plan['id']"/>
+            @include('livewire.pages.menu.components.partials.meal-plan._meal-plan-card', ['plan' => $plan])
         @empty
             <div class="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12 text-gray-500">
                 <p>Tidak ada paket makanan yang tersedia untuk kategori ini.</p>

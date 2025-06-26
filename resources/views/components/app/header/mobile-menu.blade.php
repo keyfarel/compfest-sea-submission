@@ -5,9 +5,6 @@
     $commonClasses = 'hover:bg-transparent transition-colors duration-300';
 @endphp
 
-
-
-
 <div x-show="open" x-transition class="lg:hidden px-4 pb-4">
     <ul class="menu bg-base-100 w-full rounded-box space-y-2">
         <li>

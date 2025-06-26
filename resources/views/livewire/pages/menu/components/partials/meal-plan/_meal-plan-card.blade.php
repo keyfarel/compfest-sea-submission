@@ -1,5 +1,3 @@
-@props(['plan'])
-
 <div
     @class([
         'relative flex flex-col bg-white rounded-xl overflow-hidden border border-gray-200/80 transition-shadow w-full max-w-[454px]',
