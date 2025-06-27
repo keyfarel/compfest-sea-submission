@@ -17,3 +17,7 @@ Route::get('/contact', Contact::class)->name('contact');
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
+
+Route::view('/test', 'test');
+Route::view('/test-admin', 'test-admin');
+

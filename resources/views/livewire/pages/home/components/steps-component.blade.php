@@ -1,4 +1,4 @@
-<section class="bg-white py-20 sm:py-24">
+<section id="how-it-works" class="bg-white py-20 sm:py-24">
     <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16"><h2
                 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">How It Works</h2>

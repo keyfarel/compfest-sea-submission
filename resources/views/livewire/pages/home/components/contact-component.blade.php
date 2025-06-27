@@ -1,5 +1,5 @@
-<section class="bg-gray-50 py-20 sm:py-24">
-    <div class="container mx-auto px-6">
+<section class="bg-gray-50 pt-20 pb-10 sm:pb-24">
+<div class="container mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
             <div class="space-y-6">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">Contact Us</h2>

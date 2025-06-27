@@ -14,7 +14,7 @@
             <a href="/menu"
                class="btn btn-primary bg-green-600 hover:bg-green-700 border-none text-white font-semibold py-3 px-8 rounded-full transition duration-300 w-full sm:w-auto">View
                 Our Menu</a>
-            <a href="/how-it-works"
+            <a href="#how-it-works"
                class="btn bg-slate-700 hover:bg-slate-600 border-none text-white font-semibold py-3 px-8 rounded-full transition duration-300 w-full sm:w-auto">How
                 It Works</a>
         </div>
