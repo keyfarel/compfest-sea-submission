@@ -14,12 +14,11 @@
             <input
                 class="w-full form-input rounded-full bg-gray-100 border-transparent py-2 pl-10 pr-4 text-sm focus:border-gray-300 focus:ring-0"
                 type="text" placeholder="Cari...">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 24 24" fill="none"><path
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3"><svg class="h-5 w-5 text-gray-400"
+                                                                                viewBox="0 0 24 24" fill="none"><path
                         d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"/></svg></span>
         </div>
         <button
             class="relative rounded-full p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
@@ -30,30 +29,44 @@
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </button>
-        <div x-data="{ dropdownOpen: false }" class="relative">
+
+        <!-- Dropdown -->
+        <div x-data="{ dropdownOpen: false }"
+             @click.outside="dropdownOpen = false"
+             @keydown.escape.window="dropdownOpen = false"
+             class="relative">
             <button @click="dropdownOpen = !dropdownOpen"
                     class="relative block h-10 w-10 overflow-hidden rounded-full border-2 border-transparent transition hover:border-green-600 focus:border-green-600 focus:outline-none">
                 <img class="h-full w-full object-cover"
                      src="https://ui-avatars.com/api/?name=John+Doe&background=16a34a&color=fff&font-size=0.5"
-                     alt="Avatar Pengguna"></button>
-            <div x-show="dropdownOpen" @click.away="dropdownOpen = false" class="fixed inset-0 z-10 h-full w-full"
-                 style="display: none;"></div>
+                     alt="Avatar Pengguna">
+            </button>
+
+            <!-- Dropdown menu -->
             <div x-show="dropdownOpen"
-                 class="absolute right-0 z-20 mt-2 w-56 overflow-hidden rounded-lg bg-white py-2 shadow-xl ring-1 ring-black ring-opacity-5"
-                 style="display: none;">
-                <div class="border-b px-4 py-2"><p class="text-sm font-semibold text-gray-800">John Doe</p>
-                    <p class="truncate text-xs text-gray-500">john.doe@example.com</p></div>
+                 x-cloak
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 translate-y-1"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 translate-y-1"
+                 class="absolute right-0 z-50 mt-2 w-56 overflow-hidden rounded-lg bg-white py-2 shadow-xl ring-1 ring-black ring-opacity-5">
+                <div class="border-b px-4 py-2">
+                    <p class="text-sm font-semibold text-gray-800">John Doe</p>
+                    <p class="truncate text-xs text-gray-500">john.doe@example.com</p>
+                </div>
                 <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil
-                    Saya</a><a href="#"
-                               class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pengaturan</a>
-                <div class="border-t border-gray-100"></div>
+                    Saya</a>
                 <a href="#"
-                   @click.prevent="document.getElementById('logout-form').submit()"
-                   class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50">
-                    Logout
-                </a>
+                   class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pengaturan</a>
+                <div class="border-t border-gray-100"></div>
+                <a href="#" @click.prevent="document.getElementById('logout-form').submit()"
+                   class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50">Logout</a>
             </div>
         </div>
+
+
     </div>
 
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
