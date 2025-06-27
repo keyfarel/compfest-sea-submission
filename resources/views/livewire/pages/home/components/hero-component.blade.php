@@ -6,7 +6,7 @@
             across Indonesia. Nutritious, delicious, and convenient.</p>
         <div class="mb-10">
             <img
-                src="{{ asset('storage/home/healthy-salad.webp') }}"
+                src="{{ Vite::asset('resources/images/home/healthy-salad.webp')}}"
                 alt="Healthy Salad Bowl"
                 class="w-48 h-48 rounded-full object-cover inline-block shadow-lg border-4 border-slate-700">
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Menu;
 
+use Illuminate\Support\Facades\Vite;
 use Livewire\Component;
 
 class DisplayMenu extends Component
@@ -38,7 +39,7 @@ class DisplayMenu extends Component
                 'details_url' => '#',
                 'subscribe_url' => '#',
                 'category' => 'individual',
-                'image_url' => asset('storage/menu/basic-plan.webp'),
+                'image_url' => Vite::asset('resources/images/menu/basic-plan.webp'),
             ],
             [
                 'id' => 2,
@@ -62,9 +63,8 @@ class DisplayMenu extends Component
                 'details_url' => '#',
                 'subscribe_url' => '#',
                 'category' => 'individual',
-                'image_url' => asset('storage/menu/premium-plan.webp'),
+                'image_url' => Vite::asset('resources/images/menu/premium-plan.webp'),
             ],
-
             [
                 'id' => 3,
                 'name' => 'Family Plan',
@@ -87,7 +87,7 @@ class DisplayMenu extends Component
                 'details_url' => '#',
                 'subscribe_url' => '#',
                 'category' => 'family',
-                'image_url' => asset('storage/menu/family-plan.webp'),
+                'image_url' => Vite::asset('resources/images/menu/family-plan.webp'),
             ],
             [
                 'id' => 4,
@@ -111,7 +111,7 @@ class DisplayMenu extends Component
                 'details_url' => '#',
                 'subscribe_url' => '#',
                 'category' => 'specialized',
-                'image_url' => asset('storage/menu/weight-loss-plan.webp'),
+                'image_url' => Vite::asset('resources/images/menu/weight-loss-plan.webp'),
             ],
             [
                 'id' => 5,
@@ -135,7 +135,7 @@ class DisplayMenu extends Component
                 'details_url' => '#',
                 'subscribe_url' => '#',
                 'category' => 'specialized',
-                'image_url' => asset('storage/menu/athlete-plan.webp'),
+                'image_url' => Vite::asset('resources/images/menu/athlete-plan.webp'),
             ],
             [
                 'id' => 6,
@@ -159,7 +159,7 @@ class DisplayMenu extends Component
                 'details_url' => '#',
                 'subscribe_url' => '#',
                 'category' => 'specialized',
-                'image_url' => asset('storage/menu/vegetarian-plan.webp'),
+                'image_url' => Vite::asset('resources/images/menu/vegetarian-plan.webp'),
             ],
         ];
     }

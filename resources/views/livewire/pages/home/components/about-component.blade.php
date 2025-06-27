@@ -23,7 +23,7 @@
             <div>
                 <div class="rounded-lg overflow-hidden w-full aspect-video">
                     <img
-                        src="{{ asset('storage/home/our-story.webp') }}"
+                        src="{{ Vite::asset('resources/images/home/our-story.webp') }}"
                         alt="Healthy Salad Bowl"
                         class="w-full h-full object-cover">
                 </div>
