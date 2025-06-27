@@ -3,7 +3,7 @@
     :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen}">
 
     <div class="flex h-20 items-center justify-center border-b border-gray-200/80">
-        <a href="#" class="flex items-center gap-2 text-xl font-bold text-green-700">
+        <a href="{{ route('home') }}" class="flex items-center gap-2 text-xl font-bold text-green-700">
             <x-partials.logo/>
             <span>SEA Catering</span>
         </a>

@@ -42,12 +42,16 @@
                  style="display: none;">
                 <div class="border-b px-4 py-2"><p class="text-sm font-semibold text-gray-800">John Doe</p>
                     <p class="truncate text-xs text-gray-500">john.doe@example.com</p></div>
-                <a href="#" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil
-                    Saya</a><a href="#"
-                               class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Pengaturan</a>
-                <div class="border-t border-gray-100"></div>
-                <a href="{{ route('logout') }}" class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50">Logout</a>
+                <a href="#"
+                   @click.prevent="document.getElementById('logout-form').submit()"
+                   class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                    Logout
+                </a>
             </div>
         </div>
     </div>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+        @csrf
+    </form>
 </header>

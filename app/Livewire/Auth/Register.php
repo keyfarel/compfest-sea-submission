@@ -53,13 +53,25 @@ class Register extends Component
     protected function messages(): array
     {
         return [
+            // Name field
+            'name.required' => 'Nama wajib diisi.',
             'name.unique' => 'Nama tersebut sudah terdaftar.',
+            'name.min' => 'Nama harus terdiri dari minimal 3 karakter.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+
+            // Email field
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.max' => 'Email tidak boleh lebih dari 255 karakter.',
             'email.unique' => 'Email tersebut sudah terdaftar.',
+
+            // Password field
+            'password.required' => 'Password wajib diisi.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
             'password.min' => 'Password harus terdiri dari minimal 8 karakter.',
             'password.letters' => 'Password harus mengandung setidaknya satu huruf.',
             'password.numbers' => 'Password harus mengandung setidaknya satu angka.',
             'password.symbols' => 'Password harus mengandung setidaknya satu simbol.',
-            'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ];
     }
 

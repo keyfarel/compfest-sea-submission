@@ -42,8 +42,6 @@
                 Contact Us
             </a>
         </li>
-
-        <li><a href="{{ route('login') }}" class="btn btn-ghost w-full border border-base-300 mt-3">Log In</a></li>
-        <li><a href="{{ route('register') }}" class="btn btn-primary bg-green-600 hover:bg-green-700 border-none text-white w-full">Register</a></li>
+        <x-layouts.app.header.mobile-actions/>
     </ul>
 </div>

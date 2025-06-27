@@ -16,18 +16,33 @@ class Login extends Component
     public bool $remember = false;
 
     protected array $messages = [
-        'email.required'    => 'Email wajib diisi.',
-        'email.email'       => 'Format email tidak valid.',
+        // Email field
+        'email.required' => 'Email wajib diisi.',
+        'email.email'    => 'Format email tidak valid.',
+        'email.max'      => 'Email tidak boleh lebih dari 255 karakter.',
+
+        // Password field
         'password.required' => 'Password wajib diisi.',
+        'password.min'      => 'Password minimal terdiri dari 8 karakter.',
     ];
 
     protected function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email:filter'],
-            'password' => ['required', 'string'],
+            'email' => [
+                'required',
+                'string',
+                'email:filter',
+                'max:255',
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+            ],
         ];
     }
+
 
     public function login()
     {

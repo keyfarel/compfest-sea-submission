@@ -15,9 +15,7 @@
             <h2 class="text-lg font-bold text-gray-800">Paket Diet Sehat</h2>
             <span
                 class="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">
-                <svg class="-ml-1 mr-1.5 h-2 w-2 text-green-500" fill="currentColor" viewBox="0 0 8 8"><circle cx="4"
-                                                                                                               cy="4"
-                                                                                                               r="3"/></svg>
+                <svg class="-ml-1 mr-1.5 h-2 w-2 text-green-500" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
                 Aktif
             </span>
         </div>

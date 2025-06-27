@@ -24,9 +24,15 @@ Route::get('/register', Register::class)->name('register');
 Route::middleware(['auth', 'role:1'])->get('/admin-dashboard', AdminDashboard::class)->name('admin-dashboard');
 Route::middleware(['auth', 'role:2'])->get('/user-dashboard', UserDashboard::class)->name('user-dashboard');
 
-Route::get('/logout', function () {
+Route::post('/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
     request()->session()->regenerateToken();
     return redirect()->route('login');
 })->name('logout');
+
+Route::get('/test-user-dashboard', function () {
+    dd(Auth::user());
+});
+
+
