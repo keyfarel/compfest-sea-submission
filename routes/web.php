@@ -7,6 +7,8 @@ use App\Livewire\Pages\Home\Home;
 use App\Livewire\Pages\Menu\Menu;
 use App\Livewire\Pages\Subscription\Subscription;
 use App\Livewire\Pages\Testimoni\Testimoni;
+use App\Livewire\User\Dashboard as UserDashboard;
+use App\Livewire\Admin\Dashboard as AdminDashboard;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
@@ -18,6 +20,7 @@ Route::get('/contact', Contact::class)->name('contact');
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
-Route::view('/test', 'test');
-Route::view('/test-admin', 'test-admin');
+Route::middleware(['auth', 'role:1'])->get('/admin-dashboard', AdminDashboard::class);
+Route::middleware(['auth', 'role:2'])->get('/user-dashboard', UserDashboard::class);
+
 

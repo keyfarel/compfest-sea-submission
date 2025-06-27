@@ -28,21 +28,39 @@ class Login extends Component
     // Fungsi utama yang dijalankan saat form di-submit
     public function login()
     {
-        // Validasi input
         $credentials = $this->validate();
 
-        // Coba untuk melakukan autentikasi
         if (Auth::attempt($credentials, $this->remember)) {
-            // Jika berhasil, regenerate session untuk keamanan
             request()->session()->regenerate();
 
-            // Redirect ke halaman home seperti yang diminta
-            return $this->redirect(route('home'), navigate: true);
+            $user = Auth::user();
+
+            // Cek role_id dan arahkan ke dashboard yang sesuai
+            if ($user->role_id === 1) {
+                return $this->redirect(route('admin-dashboard'), navigate: true);
+            } elseif ($user->role_id === 2) {
+                return $this->redirect(route('user-dashboard'), navigate: true);
+            } else {
+                Auth::logout(); // Jika role tidak valid, logout
+                $this->addError('email', 'Akun Anda tidak memiliki hak akses yang valid.');
+            }
         }
 
-        // Jika gagal, tambahkan pesan error ke field 'email'.
-        // Pesan ini hanya akan muncul jika email/password tidak cocok.
         $this->addError('email', 'Email atau password yang Anda masukkan salah.');
+    }
+
+    public function mount()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            // Redirect otomatis jika sudah login
+            if ($user->role_id === 1) {
+                return redirect()->route('admin-dashboard');
+            } elseif ($user->role_id === 2) {
+                return redirect()->route('user-dashboard');
+            }
+        }
     }
 
     public function render()
