@@ -6,6 +6,7 @@ use App\Models\RoleModel;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -23,11 +24,45 @@ class Register extends Component
     protected function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:m_user,email'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                'unique:m_user,name',
+            ],
+            'email' => [
+                'required',
+                'string',
+                'email:filter',
+                'max:255',
+                'unique:m_user,email',
+            ],
+            'password' => [
+                'required',
+                'string',
+                'confirmed',
+                Password::min(8)
+                    ->letters()
+                    ->numbers()
+                    ->symbols(),
+            ],
         ];
     }
+
+    protected function messages(): array
+    {
+        return [
+            'name.unique' => 'Nama tersebut sudah terdaftar.',
+            'email.unique' => 'Email tersebut sudah terdaftar.',
+            'password.min' => 'Password harus terdiri dari minimal 8 karakter.',
+            'password.letters' => 'Password harus mengandung setidaknya satu huruf.',
+            'password.numbers' => 'Password harus mengandung setidaknya satu angka.',
+            'password.symbols' => 'Password harus mengandung setidaknya satu simbol.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
+        ];
+    }
+
 
     public function updated($propertyName): void
     {
@@ -42,7 +77,6 @@ class Register extends Component
             $userRole = RoleModel::where('name', 'user')->first();
 
             if (!$userRole) {
-                // Tampilkan pesan error server
                 session()->flash('error', 'Konfigurasi role pengguna tidak ditemukan. Silakan hubungi administrator.');
                 return;
             }
@@ -53,8 +87,6 @@ class Register extends Component
                 'password' => Hash::make($validated['password']),
                 'role_id' => $userRole->id,
             ]);
-
-            Auth::login($user);
 
             session()->flash('success', 'Pendaftaran Anda berhasil! Mengarahkan ke halaman utama...');
 

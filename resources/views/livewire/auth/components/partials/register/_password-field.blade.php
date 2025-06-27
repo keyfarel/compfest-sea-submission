@@ -1,10 +1,11 @@
 <div x-data="{ showPassword: false }">
-    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+    <label for="password" class="block text-sm font-semibold text-gray-700 mb-1">
         Password <span class="text-red-500">*</span>
     </label>
     <div class="relative">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                 fill="currentColor">
                 <path fill-rule="evenodd"
                       d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
                       clip-rule="evenodd"/>
@@ -13,7 +14,11 @@
 
         <input :type="showPassword ? 'text' : 'password'" id="password" wire:model.blur="password"
                placeholder="Minimal 8 karakter"
-               class="block w-full bg-gray-50 border-gray-200 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 py-2.5 pl-10 pr-10 transition">
+               class="placeholder:text-sm mt-2 block w-full bg-gray-50 border-gray-200 rounded-md shadow-sm focus:outline-none
+                  focus:ring-[1px]
+                  focus:ring-green-600
+                  focus:border-green-600 py-2.5 pl-10 pr-10 transition"
+               @keydown.enter.prevent="focusNext('password_confirmation', $event)">
 
         <button type="button" @click="showPassword = !showPassword"
                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 rounded-r-md">
@@ -31,6 +36,11 @@
         </button>
     </div>
 
-    <p class="mt-1.5 text-xs text-gray-500">Gunakan minimal 8 karakter dengan kombinasi huruf, angka & simbol.</p>
-    @error('password') <span class="text-xs text-red-500 mt-1">{{ $message }}</span> @enderror
+    @error('password')
+    <p class="mt-1.5 text-xs text-red-500">{{ $message }}</p>
+    @else
+        <p class="mt-1.5 text-xs text-gray-500">
+            Gunakan minimal 8 karakter dengan kombinasi huruf, angka & simbol.
+        </p>
+        @enderror
 </div>

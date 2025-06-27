@@ -1,5 +1,5 @@
 <div x-data="{ showConfirm: false }">
-    <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-1">
+    <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-1">
         Konfirmasi Password <span class="text-red-500">*</span>
     </label>
     <div class="relative">
@@ -15,7 +15,14 @@
         <input :type="showConfirm ? 'text' : 'password'" id="password_confirmation"
                name="password_confirmation" wire:model.blur="password_confirmation"
                placeholder="Ulangi password" required
-               class="block w-full bg-gray-50 border-gray-200 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 py-2.5 pl-10 pr-10 transition">
+               class="placeholder:text-sm mt-2 block w-full bg-gray-50 border-gray-200 rounded-md shadow-sm focus:outline-none
+                  focus:ring-[1px]
+                  focus:ring-green-600
+                  focus:border-green-600 py-2.5 pl-10 pr-10 transition"
+               @keydown.enter.prevent="
+                if ($event.target.value.trim() !== '') {
+                    $refs.submitButton.click();
+                }">
 
         <button type="button" @click="showConfirm = !showConfirm"
                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 rounded-r-md">

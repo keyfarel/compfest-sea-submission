@@ -1,5 +1,5 @@
 <div x-data="{ showPassword: false }">
-    <label for="password" class="block text-sm font-medium text-gray-700">
+    <label for="password" class="block text-sm font-semibold text-gray-700">
         Password <span class="text-red-500">*</span>
     </label>
 
@@ -16,9 +16,11 @@
         <!-- Input -->
         <input :type="showPassword ? 'text' : 'password'" id="password" wire:model="password"
                placeholder="Masukkan password" required
-               class="block w-full bg-gray-50 border-gray-200 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 py-2.5 pl-10 pr-10 transition" />
+               class="placeholder:text-sm mt-2 block w-full bg-gray-50 border-gray-200 rounded-md shadow-sm focus:outline-none
+                  focus:ring-[1px]
+                  focus:ring-green-600
+                  focus:border-green-600 py-2.5 pl-10 pr-10 transition" />
 
-        <!-- Eye toggle button -->
         <!-- Eye toggle button -->
         <button type="button"
                 @click="showPassword = !showPassword"

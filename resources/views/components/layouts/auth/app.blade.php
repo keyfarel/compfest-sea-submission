@@ -20,5 +20,8 @@
 
 @livewireScripts
 @stack('scripts')
+{{--@push('scripts')--}}
+{{--<x-utils.auth-toast-script/>--}}
+{{--@endpush--}}
 </body>
 </html>

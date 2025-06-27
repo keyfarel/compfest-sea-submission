@@ -1,4 +1,4 @@
-<div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-2xl shadow-sm border border-gray-100">
+<div class="w-full max-w-md bg-white p-8 sm:p-10 rounded-2xl shadow-sm border border-gray-200">
 
     <div>
         {{-- Pesan Sukses (Hijau) --}}
@@ -17,7 +17,16 @@
     </div>
 
     @include('livewire.auth.components.partials.register._title')
-    <form wire:submit="register" class="mt-8 space-y-4">
+    <form
+        x-data="{
+        focusNext(nextFieldId, event) {
+            if (event.target.value.trim() !== '') {
+                document.getElementById(nextFieldId).focus();
+                }
+            }
+        }"
+        wire:submit.prevent="register"
+        class="mt-8 space-y-4">
         @include('livewire.auth.components.partials.register._fullname-field')
         @include('livewire.auth.components.partials.register._email-field')
         @include('livewire.auth.components.partials.register._password-field')

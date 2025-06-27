@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Auth\Login;
+use Illuminate\Support\Facades\Auth;
 use App\Livewire\Auth\Register;
 use App\Livewire\Pages\Contact\Contact;
 use App\Livewire\Pages\Home\Home;
@@ -20,7 +21,12 @@ Route::get('/contact', Contact::class)->name('contact');
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
-Route::middleware(['auth', 'role:1'])->get('/admin-dashboard', AdminDashboard::class);
-Route::middleware(['auth', 'role:2'])->get('/user-dashboard', UserDashboard::class);
+Route::middleware(['auth', 'role:1'])->get('/admin-dashboard', AdminDashboard::class)->name('admin-dashboard');
+Route::middleware(['auth', 'role:2'])->get('/user-dashboard', UserDashboard::class)->name('user-dashboard');
 
-
+Route::get('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('login');
+})->name('logout');
