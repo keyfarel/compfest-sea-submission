@@ -22,6 +22,18 @@ Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
 Route::middleware(['auth', 'role:1'])->get('/admin-dashboard', AdminDashboard::class)->name('admin-dashboard');
+Route::middleware(['auth', 'role:1'])->group(function () {
+    Route::get('/admin-dashboard', AdminDashboard::class)->name('admin-dashboard');
+    Route::get('/admin-manage-users', function () {
+        return view('livewire.admin.manage-users');
+    })->name('manage-users');
+    Route::get('/admin-manage-orders', function () {
+        return view('livewire.admin.manage-orders');
+    })->name('manage-orders');
+    Route::get('/admin-reports', function () {
+        return view('livewire.admin.reports');
+    })->name('reports');
+});
 Route::middleware(['auth', 'role:2'])->group(function () {
     Route::get('/user-dashboard', UserDashboard::class)->name('user-dashboard');
     Route::get('/user-subscriptions', function () {

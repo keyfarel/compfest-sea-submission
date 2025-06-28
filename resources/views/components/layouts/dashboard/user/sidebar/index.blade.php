@@ -1,8 +1,8 @@
 <aside
-    class="fixed inset-y-0 left-0 z-30 flex h-full w-64 flex-col border-r border-gray-200/80 bg-white shadow-sm transition-transform duration-300 ease-in-out"
+    class="fixed inset-y-0 left-0 z-30 flex h-full w-64 flex-col border-r border-gray-200/80 bg-white shadow-sm transition-transform duration-300 ease-in-out -translate-x-full"
     :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen}">
 
-    <div class="flex h-20 items-center justify-center border-b border-gray-200/80">
+<div class="flex h-20 items-center justify-center border-b border-gray-200/80">
         <a href="{{ route('home') }}" class="flex items-center gap-2 text-xl font-bold text-green-700">
             <x-partials.logo/>
             <span>SEA Catering</span>

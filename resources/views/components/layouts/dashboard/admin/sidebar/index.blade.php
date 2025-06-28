@@ -1,8 +1,8 @@
 <aside
-    class="fixed inset-y-0 left-0 z-30 flex h-full w-64 flex-col border-r border-gray-200/80 bg-white shadow-sm transition-transform duration-300 ease-in-out"
+    class="fixed inset-y-0 left-0 z-30 flex h-full w-64 flex-col border-r border-gray-200/80 bg-white shadow-sm transition-transform duration-300 ease-in-out -translate-x-full"
     :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen}">
 
-    <div class="flex h-20 items-center justify-center border-b border-gray-200/80">
+<div class="flex h-20 items-center justify-center border-b border-gray-200/80">
         <a href="{{ route('home') }}" class="flex items-center gap-2 text-xl font-bold text-green-700">
             <x-partials.logo/>
             <span>SEA Catering</span>
@@ -11,8 +11,10 @@
 
     <div class="flex flex-1 flex-col justify-between overflow-y-auto">
         <nav class="mt-4 space-y-2 px-4">
-            <a href="#"
-               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900">
+            <!-- Dashboard -->
+            <a href="{{ route('admin-dashboard') }}"
+               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors
+                      {{ request()->routeIs('admin-dashboard') ? 'bg-green-100 font-semibold text-green-700' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' }}">
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -20,8 +22,11 @@
                 </svg>
                 <span>Dashboard</span>
             </a>
-            <a href="#"
-               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 bg-green-100 font-semibold text-green-700 transition-colors">
+
+            <!-- Kelola Pengguna -->
+            <a href="{{ route('manage-users') }}"
+               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors
+                      {{ request()->routeIs('manage-users*') ? 'bg-green-100 font-semibold text-green-700' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' }}">
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -30,8 +35,10 @@
                 <span>Kelola Pengguna</span>
             </a>
 
-            <a href="#"
-               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900">
+            <!-- Kelola Pesanan -->
+            <a href="{{ route('manage-orders') }}"
+               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors
+                      {{ request()->routeIs('manage-orders*') ? 'bg-green-100 font-semibold text-green-700' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' }}">
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -40,8 +47,10 @@
                 <span>Kelola Pesanan</span>
             </a>
 
-            <a href="#"
-               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900">
+            <!-- Laporan -->
+            <a href="{{ route('reports') }}"
+               class="group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors
+                      {{ request()->routeIs('reports*') ? 'bg-green-100 font-semibold text-green-700' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' }}">
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
