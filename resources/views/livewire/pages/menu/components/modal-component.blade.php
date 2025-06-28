@@ -1,4 +1,4 @@
-<x-partials.modal wire:model="showDetailModal" title="{{ $selectedPlan['name'] }}">
+<x-utils.modals.general-modal wire:model="showDetailModal" title="{{ $selectedPlan['name'] }}">
     <div class="space-y-6">
         <div class="bg-gray-100 rounded-lg h-56 flex items-center justify-center overflow-hidden">
             <img src="{{ $selectedPlan['image_url'] }}"
@@ -49,4 +49,4 @@
         </x-slot:footer>
     </div>
 
-</x-partials.modal>
+</x-utils.modals.general-modal>

@@ -24,7 +24,7 @@
         <x-layouts.dashboard.admin.header.index/>
         <x-layouts.dashboard.admin.breadcrumb.index/>
 
-        <main class="flex-1 overflow-y-auto">
+        <main id="main-content"class="flex-1 overflow-y-auto">
             <div class="mx-auto px-4 py-6 sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>
