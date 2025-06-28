@@ -22,7 +22,15 @@ Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
 
 Route::middleware(['auth', 'role:1'])->get('/admin-dashboard', AdminDashboard::class)->name('admin-dashboard');
-Route::middleware(['auth', 'role:2'])->get('/user-dashboard', UserDashboard::class)->name('user-dashboard');
+Route::middleware(['auth', 'role:2'])->group(function () {
+    Route::get('/user-dashboard', UserDashboard::class)->name('user-dashboard');
+    Route::get('/user-subscriptions', function () {
+        return view('livewire.user.subscriptions');
+    })->name('user-subscriptions');
+    Route::get('/user-orders', function () {
+        return view('livewire.user.orders');
+    })->name('user-orders');
+});
 
 Route::post('/logout', function () {
     Auth::logout();
