@@ -35,7 +35,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan optimize:clear --ansi",
+            "@rm -f bootstrap/cache/routes-v7.php",
+            "@rm -f bootstrap/cache/config.php",
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
