@@ -16,7 +16,6 @@ class DisplayMenu extends Component
 
     public function mount()
     {
-//        $this->plans =[];
         $this->plans = [
             [
                 'id' => 1,
@@ -171,7 +170,6 @@ class DisplayMenu extends Component
 
     public function showPlanDetails($planId)
     {
-        // Cari plan berdasarkan ID
         $foundPlan = collect($this->plans)->firstWhere('id', $planId);
 
         if ($foundPlan) {

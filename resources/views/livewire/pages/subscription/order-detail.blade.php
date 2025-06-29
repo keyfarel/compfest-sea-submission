@@ -1,1 +1,1 @@
-@include('livewire.pages.subscription.components.partials._order-detail-card')
+@include('livewire.pages.subscription.components.order-detail._order-detail-component')
