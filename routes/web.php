@@ -1,5 +1,7 @@
 <?php
 
+ini_adalah_error_sengaja_untuk_tes_deployment;
+
 use App\Livewire\Auth\Login\Index as LoginPage;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\Auth\Register\Index as RegisterPage;
