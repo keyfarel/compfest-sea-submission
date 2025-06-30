@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth\Register;
 
 use App\Models\RoleModel;
+use Exception;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -44,6 +45,8 @@ class Index extends Component
                     ->letters()
                     ->numbers()
                     ->symbols(),
+                'regex:/[A-Z]/', // minimal satu huruf besar
+                'regex:/[a-z]/', // minimal satu huruf kecil
             ],
         ];
     }
@@ -70,6 +73,9 @@ class Index extends Component
             'password.letters' => 'Password harus mengandung setidaknya satu huruf.',
             'password.numbers' => 'Password harus mengandung setidaknya satu angka.',
             'password.symbols' => 'Password harus mengandung setidaknya satu simbol.',
+            'password.regex' => 'Password harus mengandung setidaknya satu huruf besar dan satu huruf kecil.',
+            'password.regex:/[A-Z]/' => 'Password harus mengandung setidaknya satu huruf besar.',
+            'password.regex:/[a-z]/' => 'Password harus mengandung setidaknya satu huruf kecil.',
         ];
     }
 

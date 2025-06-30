@@ -13,8 +13,6 @@
             @forelse ($users as $index => $user)
                 <livewire:admin.manage-users.show-user
                     :user="$user"
-
-                    {{-- UBAH BAGIAN INI LAGI --}}
                     :loopIndex="$index"
                     :currentPage="$users->currentPage()"
                     :perPage="$users->perPage()"

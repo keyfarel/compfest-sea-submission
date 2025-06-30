@@ -1,4 +1,4 @@
-{{-- PERUBAHAN 1: `x-data` sekarang hanya mengurus UI (apakah dropdown terbuka) --}}
+{{-- PERBAIKAN UTAMA ADA DI SINI --}}
 <div x-data="{ open: false }" class="relative w-full md:w-auto">
     <button @click="open = !open" @click.outside="open = false" type="button"
             class="inline-flex w-full justify-center items-center gap-x-2 rounded-lg border border-green-600 bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700">
@@ -17,29 +17,18 @@
 
         <div>
             <p class="text-sm font-semibold text-gray-700 mb-1">Role</p>
-            <template x-for="role in ['Semua Peran', 'Admin', 'User']" :key="role">
+            {{-- PERBAIKAN: Ganti Alpine x-for dengan Blade @foreach untuk memakai data dari server --}}
+            @foreach($roles as $roleOption)
                 <label
                     class="block text-sm cursor-pointer rounded px-2 py-1"
-                    {{-- PERUBAHAN 2: `:class` sekarang memeriksa properti Livewire via `$wire` --}}
-                    :class="$wire.role === role ? 'bg-green-100 text-green-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'">
+                    {{-- :class tetap menggunakan Alpine untuk memeriksa properti Livewire via $wire --}}
+                    :class="$wire.role === '{{ $roleOption }}' ? 'bg-green-100 text-green-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'">
 
-                    {{-- PERUBAHAN 3: `wire:model` akan langsung mengubah properti di backend --}}
-                    <input wire:model="role" type="radio" class="hidden" name="role" :value="role">
-                    <span x-text="role"></span>
+                    {{-- PERBAIKAN: Gunakan wire:model.live agar filter langsung aktif saat diklik --}}
+                    <input wire:model.live="role" type="radio" class="hidden" name="role" value="{{ $roleOption }}">
+                    <span>{{ $roleOption }}</span>
                 </label>
-            </template>
-        </div>
-
-        <div>
-            <p class="text-sm font-semibold text-gray-700 mb-1">Status</p>
-            <template x-for="status in ['Semua Status', 'Aktif', 'Tidak Aktif']" :key="status">
-                <label
-                    class="block text-sm cursor-pointer rounded px-2 py-1"
-                    :class="$wire.status === status ? 'bg-green-100 text-green-700 font-semibold' : 'text-gray-600 hover:bg-gray-100'">
-                    <input wire:model="status" type="radio" class="hidden" name="status" :value="status">
-                    <span x-text="status"></span>
-                </label>
-            </template>
+            @endforeach
         </div>
     </div>
 </div>

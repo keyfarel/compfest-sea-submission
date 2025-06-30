@@ -8,9 +8,9 @@
         </svg>
     </div>
     <input
-        wire:model.debounce.500ms="search"
+        wire:model.live.debounce.200ms="search"
         type="search"
-        placeholder="Cari pengguna..."
+        placeholder="Cari nama, email, atau peran..."
         class="text-gray-600 placeholder:text-sm w-full rounded-lg border border-gray-300 pl-10 pr-3 py-2 text-sm font-semibold shadow-sm focus:outline-none focus:border-green-600 focus:ring-0"
     />
 </div>

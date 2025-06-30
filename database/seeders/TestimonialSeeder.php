@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\UserModel;
-use App\Models\Testimonial;
+use App\Models\TestimonialModel;
 
 class TestimonialSeeder extends Seeder
 {
@@ -58,7 +58,7 @@ class TestimonialSeeder extends Seeder
         ];
 
         foreach ($testimonials as $testimonial) {
-            Testimonial::create($testimonial);
+            TestimonialModel::create($testimonial);
         }
     }
 }

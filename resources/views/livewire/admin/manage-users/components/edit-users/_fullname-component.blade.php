@@ -14,5 +14,6 @@
                           py-2 pl-10 pr-4 transition">
     </div>
     @error('editingUser.name')
-    <div class="mt-1 text-sm text-red-600">{{ $message }}</div> @enderror
+    <div class="mt-1 text-sm text-red-600">{{ $message }}</div>
+    @enderror
 </div>

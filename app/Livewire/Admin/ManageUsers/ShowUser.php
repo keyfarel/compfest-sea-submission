@@ -2,14 +2,12 @@
 
 namespace App\Livewire\Admin\ManageUsers;
 
+use App\Livewire\Admin\ManageUsers\EditUser as EditUserComponent;
 use Livewire\Component;
-use Livewire\Attributes\Reactive;
 
 class ShowUser extends Component
 {
-    #[Reactive]
     public array $user;
-
     public int $loopIndex;
     public int $currentPage;
     public int $perPage;
@@ -21,7 +19,7 @@ class ShowUser extends Component
 
     public function requestUserEdit()
     {
-        $this->dispatch('launchEditModal', userId: $this->user['id']);
+        $this->dispatch('load-user-to-edit', userId: $this->user['id'])->to(EditUserComponent::class);
     }
 
     public function requestUserDeletion()

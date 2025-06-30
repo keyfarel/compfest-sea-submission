@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages\Testimoni;
 
-use App\Models\Testimonial;
+use App\Models\TestimonialModel;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -12,7 +12,7 @@ class ShowTestimoni extends Component
 
     public function mount()
     {
-        $this->testimonials = Testimonial::orderBy('rating', 'desc')->get();
+        $this->testimonials = TestimonialModel::orderBy('rating', 'desc')->get();
     }
 
     public function render()

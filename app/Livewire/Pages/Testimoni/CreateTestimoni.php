@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages\Testimoni;
 
-use App\Models\Testimonial;
+use App\Models\TestimonialModel;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 
@@ -42,7 +42,7 @@ class CreateTestimoni extends Component
 
         $validatedData = $this->validate();
 
-        Testimonial::create([
+        TestimonialModel::create([
             'user_id' => auth()->id(),
             'name' => $validatedData['name'],
             'location' => $validatedData['location'] ?: null,
