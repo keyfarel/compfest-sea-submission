@@ -1,5 +1,5 @@
 <div class="mt-8" x-data="{
-    mealTypes: @entangle('mealTypes'),
+    mealTypes: @entangle('mealTypes').live,
     allMeals: ['breakfast', 'lunch', 'dinner'],
     get isAllMealsSelected() {
         return this.allMeals.every(meal => this.mealTypes.includes(meal));

@@ -1,5 +1,5 @@
 <div class="mt-8" x-data="{
-    deliveryDays: @entangle('deliveryDays'),
+    deliveryDays: @entangle('deliveryDays').live,
     allDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
     get isAllSelected() {
         return this.allDays.every(day => this.deliveryDays.includes(day));
