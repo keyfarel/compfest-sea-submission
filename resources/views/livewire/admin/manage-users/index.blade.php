@@ -10,14 +10,21 @@
             @include('livewire.admin.manage-users.components.index._table-header-component')
 
             <tbody class="bg-white divide-y-2 md:divide-y divide-gray-200">
-            @forelse($users as $user)
-                @livewire('admin.manage-users.show-user', [
-                'user' => $user,
-                'index' => $loop->iteration
-                ], key('user-row-'.$user['id']))
+            @forelse ($users as $index => $user)
+                <livewire:admin.manage-users.show-user
+                    :user="$user"
+
+                    {{-- UBAH BAGIAN INI LAGI --}}
+                    :loopIndex="$index"
+                    :currentPage="$users->currentPage()"
+                    :perPage="$users->perPage()"
+
+                    :key="$user['id']"
+                />
             @empty
                 @include('livewire.admin.manage-users.components.index._empty-user-component')
             @endforelse
+            {{-- ... --}}
             </tbody>
         </table>
     </div>

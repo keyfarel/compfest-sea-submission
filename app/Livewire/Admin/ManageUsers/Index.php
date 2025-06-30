@@ -18,6 +18,7 @@ use Illuminate\Support\Collection;
 class Index extends Component
 {
     use WithPagination;
+
     public array $allUsers = [];
     public string $search = '';
     public string $role = 'Semua Peran';
@@ -79,14 +80,21 @@ class Index extends Component
         });
 
         $perPage = 5;
-        $currentPage = Paginator::resolveCurrentPage('page');
-        $currentPageItems = $filteredUsers->slice(($currentPage - 1) * $perPage, $perPage);
+        $currentPage = $this->getPage();
+
+        $currentPageItems = $filteredUsers
+            ->slice(($currentPage - 1) * $perPage, $perPage)
+            ->values();
+
         $users = new LengthAwarePaginator(
             $currentPageItems,
             $filteredUsers->count(),
             $perPage,
             $currentPage,
-            ['path' => Paginator::resolveCurrentPath(), 'pageName' => 'page']
+            [
+                'path' => request()->url(),
+                'pageName' => 'page',
+            ]
         );
 
         return view('livewire.admin.manage-users.index', [

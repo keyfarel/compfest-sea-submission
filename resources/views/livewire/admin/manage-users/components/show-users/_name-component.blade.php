@@ -6,8 +6,8 @@
                 </span>
         </div>
         <div class="ml-4">
-            <div class="text-sm font-medium text-gray-900">{{ $user['name'] }}</div>
-            <div class="text-sm text-gray-500">{{ $user['email'] }}</div>
+            <div class="text-sm font-semibold text-gray-700">{{ $user['name'] }}</div>
+            <div class="text-sm text-gray-400">{{ $user['email'] }}</div>
         </div>
     </div>
 </td>

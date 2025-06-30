@@ -3,21 +3,20 @@
 namespace App\Livewire\Admin\ManageUsers;
 
 use Livewire\Component;
-use Livewire\Attributes\Reactive; // <-- 1. IMPORT ATTRIBUTE REACTIVE
+use Livewire\Attributes\Reactive;
 
 class ShowUser extends Component
 {
-    // 2. TAMBAHKAN ATTRIBUTE #[Reactive] DI SINI
     #[Reactive]
     public array $user;
 
-    public int $index;
+    public int $loopIndex;
+    public int $currentPage;
+    public int $perPage;
 
-    // Method mount tidak perlu diubah, Livewire akan menanganinya secara otomatis
-    public function mount(array $user, int $index)
+    public function getRowIndexProperty(): int
     {
-        $this->user = $user;
-        $this->index = $index;
+        return (($this->currentPage - 1) * $this->perPage) + $this->loopIndex + 1;
     }
 
     public function requestUserEdit()
@@ -32,6 +31,8 @@ class ShowUser extends Component
 
     public function render()
     {
-        return view('livewire.admin.manage-users.show-user');
+        return view('livewire.admin.manage-users.show-user', [
+            'rowIndex' => $this->rowIndex,
+        ]);
     }
 }

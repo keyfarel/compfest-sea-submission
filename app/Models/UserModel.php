@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+// Pastikan RoleModel juga berada di namespace yang sama atau di-import jika perlu
+// use App\Models\RoleModel;
 
 class UserModel extends Authenticatable
 {
@@ -26,6 +28,6 @@ class UserModel extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo(Role::class, 'role_id');
+        return $this->belongsTo(RoleModel::class, 'role_id');
     }
 }

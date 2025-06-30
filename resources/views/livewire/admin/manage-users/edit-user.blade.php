@@ -7,17 +7,14 @@
         <!-- Email -->
         @include('livewire.admin.manage-users.components.edit-users._email-component')
 
+        <!-- Dropdown Peran -->
+        @include('livewire.admin.manage-users.components.edit-users._role-component')
+
         <!-- Input Password -->
         @include('livewire.admin.manage-users.components.edit-users._password-component')
 
         <!-- Input Konfirmasi Password -->
         @include('livewire.admin.manage-users.components.edit-users._confirm-password-component')
-
-        <!-- Dropdown Peran -->
-        @include('livewire.admin.manage-users.components.edit-users._role-component')
-
-        <!-- Status Akun -->
-        @include('livewire.admin.manage-users.components.edit-users._status-component')
     </div>
 
     <x-slot:footer>
