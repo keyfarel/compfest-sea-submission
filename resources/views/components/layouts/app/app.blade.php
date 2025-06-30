@@ -8,6 +8,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     @stack('css')
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
 <body class="antialiased">
 
