@@ -1,31 +1,15 @@
-<x-slot:title>
-    Admin Dashboard
-</x-slot:title>
+<div class="lg:col-span-2 overflow-hidden rounded-xl bg-white p-6 shadow-lg ring-1 ring-black ring-opacity-5"
+     wire:ignore.self
+     x-data="chartComponent()"
+     x-init="initChart()"
+     @chart-updated.window="handleChartUpdate($event)">
 
-<div class="space-y-8 max-w-7xl mx-auto">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        @include('livewire.admin.components._header-component')
-
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3 w-full sm:w-auto">
-            <div
-                class="flex flex-col md:flex-row gap-2 w-full md:w-auto border border-gray-300 rounded-lg shadow-sm p-2 bg-white">
-                @include('livewire.admin.components._filter-dropdown-component')
-
-                <div class="h-px w-full bg-gray-200 md:h-6 md:w-px md:bg-gray-300 md:mx-1 self-center"></div>
-                @include('livewire.admin.components._date-range-component')
-            </div>
-        </div>
-    </div>
-
-    @include('livewire.admin.components._info-card-component')
-
-    <div wire:loading.class="opacity-50" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        @include('livewire.admin.components._chart-card-component')
-        <div class="lg:col-span-1 overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-            @include('livewire.admin.components._subscriber-card-component')
-        </div>
+    <h3 class="text-lg font-semibold text-gray-900">Grafik Langganan Baru</h3>
+    <div class="mt-6 h-72">
+        <canvas id="newSubscriptionsChart"></canvas>
     </div>
 </div>
+
 
 <script id="chart-initial-data" type="application/json">
     @json($this->getChartData())

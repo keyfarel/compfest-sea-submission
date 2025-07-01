@@ -1,5 +1,6 @@
 import './init/carousel';
 import './init/toastify';
+import './init/chart.js';
 import './bootstrap';
 
 // Gambar untuk Halaman Home
