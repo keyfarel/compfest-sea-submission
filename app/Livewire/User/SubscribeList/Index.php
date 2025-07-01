@@ -3,6 +3,7 @@
 namespace App\Livewire\User\SubscribeList;
 
 use App\Models\SubscriptionModel;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -36,7 +37,8 @@ class Index extends Component
     public function openPauseModal($subscriptionId)
     {
         $this->subscriptionToPause = $this->subscriptions->find($subscriptionId);
-        $this->reset(['pauseStartDate', 'pauseEndDate']);
+        $this->pauseStartDate = Carbon::today()->format('Y-m-d');
+        $this->pauseEndDate = null;
         $this->showPauseModal = true;
     }
 

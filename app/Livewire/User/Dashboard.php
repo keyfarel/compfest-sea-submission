@@ -3,6 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\SubscriptionModel;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -46,7 +47,8 @@ class Dashboard extends Component
 
     public function openPauseModal()
     {
-        $this->reset(['pauseStartDate', 'pauseEndDate']);
+        $this->pauseStartDate = Carbon::today()->format('Y-m-d');
+        $this->pauseEndDate = null;
         $this->showPauseModal = true;
     }
 
