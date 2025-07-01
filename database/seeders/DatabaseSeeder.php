@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             MealTypeSeeder::class,
             DeliveryDaySeeder::class,
             TestimonialSeeder::class,
-//            SubscriptionSeeder::class,
+            SubscriptionSeeder::class,
             StatusHistorySeeder::class,
         ]);
     }
