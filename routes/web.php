@@ -35,9 +35,6 @@ Route::middleware(['auth', 'role:1'])->group(function () {
     Route::get('/admin-dashboard', AdminDashboard::class)->name('admin-dashboard');
     Route::get('/admin-manage-users', ManageUsers::class)->name('manage-users');
     Route::get('/admin-manage-orders', ManageSubscribe::class)->name('manage-orders');
-    Route::get('/admin-reports', function () {
-        return view('livewire.admin.reports');
-    })->name('reports');
 });
 
 // Grup route untuk user (role: 2)
