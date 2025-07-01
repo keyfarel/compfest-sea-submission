@@ -1,5 +1,5 @@
 @props([
-    'wireClick' => '',
+    'wireClick' => null,
     'target' => '',
     'type' => 'button',
     'size' => 'normal'
@@ -14,20 +14,25 @@
 
 <button
     type="{{ $type }}"
-    wire:click="{{ $wireClick }}"
+
+    @if ($wireClick)
+        wire:click="{{ $wireClick }}"
+    @endif
+
     wire:loading.attr="disabled"
-    wire:target="{{ $target }}"
+    wire:target="{{ $target ?: $wireClick }}"
+
     {{ $attributes->class([
         'w-full bg-green-600 text-white hover:bg-green-700 transition-colors disabled:opacity-70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
         $sizeClasses
     ]) }}>
 
-    <div wire:loading wire:target="{{ $wireClick }}">
-        <x-utils.spinners.button-spinner :target="$wireClick" />
+    <div wire:loading wire:target="{{ $wireClick ?: $target }}">
+        <x-utils.spinners.button-spinner/>
         Processing...
     </div>
 
-    <div wire:loading.remove wire:target="{{ $wireClick }}">
+    <div wire:loading.remove wire:target="{{ $wireClick ?: $target }}">
         {{ $slot }}
     </div>
 

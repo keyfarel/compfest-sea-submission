@@ -4,99 +4,11 @@
 
 <div class="space-y-8">
     <div>
-        <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Dashboard Langganan</h1>
-        <p class="mt-2 text-lg text-gray-600">Lihat dan kelola langganan makanan Anda secara cepat melalui dashboard
-            ini.</p>
+        <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Langganan Saya</h1>
+        <p class="mt-2 text-lg text-gray-600">Kelola semua paket langganan Anda di sini.</p>
     </div>
 
-    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-            <div class="p-5">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <svg class="h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                        </svg>
-                    </div>
-                    <div class="ml-5 w-0 flex-1">
-                        <dl>
-                            <dt class="truncate text-sm font-medium text-gray-500">Total Langganan</dt>
-                            <dd>
-                                <div class="text-lg font-bold text-gray-900">{{ $totalSubscriptions }}</div>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-            <div class="p-5">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div class="ml-5 w-0 flex-1">
-                        <dl>
-                            <dt class="truncate text-sm font-medium text-gray-500">Aktif</dt>
-                            <dd>
-                                <div class="text-lg font-bold text-gray-900">{{ $activeSubscriptions }}</div>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-            <div class="p-5">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <svg class="h-6 w-6 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div class="ml-5 w-0 flex-1">
-                        <dl>
-                            <dt class="truncate text-sm font-medium text-gray-500">Dijeda</dt>
-                            <dd>
-                                <div class="text-lg font-bold text-gray-900">{{ $pausedSubscriptions }}</div>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-            <div class="p-5">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <svg class="h-6 w-6 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                             viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-                        </svg>
-                    </div>
-                    <div class="ml-5 w-0 flex-1">
-                        <dl>
-                            <dt class="truncate text-sm font-medium text-gray-500">Dibatalkan</dt>
-                            <dd>
-                                <div class="text-lg font-bold text-gray-900">{{ $cancelledSubscriptions }}</div>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @if ($subscription)
+    @forelse ($subscriptions as $subscription)
         @php
             $status = $subscription->latest_status;
             $statusConfig = [
@@ -162,22 +74,45 @@
                         </div>
                     </div>
                 @elseif($status === 'dijeda')
-                    <div class="rounded-md bg-yellow-50 p-4">
-                        <h3 class="text-sm font-semibold text-yellow-800">Langganan Dijeda</h3>
-                        <p class="mt-2 text-sm text-yellow-700">
-                            @if ($subscription->latestPauseHistory)
-                                Pengiriman Anda dihentikan sementara dari tanggal
-                                <strong>{{ $subscription->latestPauseHistory->pause_start_date->format('d M Y') }}</strong>
-                                hingga
-                                <strong>{{ $subscription->latestPauseHistory->pause_end_date->format('d M Y') }}</strong>
-                                .
-                            @else
-                                Pengiriman makanan Anda dihentikan sementara.
-                            @endif
-                        </p>
+                    <div class="space-y-4">
+                        <div class="rounded-md bg-yellow-50 p-4">
+                            <h3 class="text-sm font-semibold text-yellow-800">Langganan Dijeda</h3>
+                            <p class="mt-2 text-sm text-yellow-700">
+                                @if ($subscription->latestPauseHistory)
+                                    Pengiriman Anda dihentikan sementara dari tanggal
+                                    <strong>{{ $subscription->latestPauseHistory->pause_start_date->format('d M Y') }}</strong>
+                                    hingga
+                                    <strong>{{ $subscription->latestPauseHistory->pause_end_date->format('d M Y') }}</strong>
+                                    .
+                                @else
+                                    Pengiriman makanan Anda dihentikan sementara.
+                                @endif
+                            </p>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-4">
+                            <dl class="flex justify-between">
+                                <dt class="text-sm font-medium text-gray-500">Nama Paket</dt>
+                                <dd class="text-sm font-semibold text-gray-900">{{ $subscription->plan->name }}</dd>
+                            </dl>
+                            <dl class="flex justify-between mt-2">
+                                <dt class="text-sm font-medium text-gray-500">Tipe Makanan</dt>
+                                <dd class="text-sm text-gray-900">{{ $subscription->mealTypes->pluck('name')->implode(' & ') }}</dd>
+                            </dl>
+                            <dl class="flex justify-between mt-2">
+                                <dt class="text-sm font-medium text-gray-500">Hari Pengiriman</dt>
+                                <dd class="text-sm text-gray-900">{{ $subscription->deliveryDays->pluck('name')->implode(', ') }}</dd>
+                            </dl>
+                        </div>
                     </div>
                 @elseif($status === 'dibatalkan')
                     <div class="space-y-4">
+                        <div class="rounded-md bg-red-50 p-4">
+                            <h3 class="text-sm font-semibold text-red-800">Langganan Dibatalkan</h3>
+                            <p class="mt-2 text-sm text-red-700">
+                                Pengiriman Anda Dibatalkan
+                            </p>
+                        </div>
                         <dl class="flex justify-between">
                             <dt class="text-sm font-medium text-gray-500">Nama Paket</dt>
                             <dd class="text-sm font-semibold text-gray-900">{{ $subscription->plan->name }}</dd>
@@ -196,37 +131,41 @@
 
             <div
                 class="flex flex-col-reverse gap-3 p-4 sm:flex-row sm:justify-end sm:gap-4 sm:px-6 bg-gray-50 border-t border-gray-200">
+
                 @if ($status === 'aktif')
-                    <button type="button" wire:click="openPauseModal"
-                            wire:confirm="Anda yakin ingin menjeda langganan ini?"
+                    <button type="button" wire:click="openPauseModal({{ $subscription->id }})"
                             class="w-full sm:w-auto rounded-lg bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                         Jeda Langganan
                     </button>
-                    <button type="button" wire:click="cancel"
+                    <button type="button" wire:click="cancel({{ $subscription->id }})"
                             wire:confirm="Langganan yang dibatalkan tidak bisa diaktifkan kembali. Lanjutkan?"
                             class="w-full sm:w-auto rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500">
                         Batalkan Langganan
                     </button>
+
                 @elseif ($status === 'dijeda')
-                    <button type="button" wire:click="cancel"
+                    <button type="button" wire:click="cancel({{ $subscription->id }})"
                             wire:confirm="Langganan yang dibatalkan tidak bisa diaktifkan kembali. Lanjutkan?"
                             class="w-full sm:w-auto rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500">
                         Batalkan Saja
                     </button>
-                    <button type="button" wire:click="resume"
+                    <button type="button" wire:click="resume({{ $subscription->id }})"
                             class="w-full sm:w-auto rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-700">
                         Aktifkan Sekarang
                     </button>
+
                 @elseif ($status === 'dibatalkan')
                     <a href="{{ route('subscription') }}" wire:navigate
                        class="w-full sm:w-auto rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
                         Langganan Lagi
                     </a>
+
                 @endif
+
+                {{-- Memang tidak ada tombol yang ditampilkan untuk status 'pending' --}}
             </div>
         </div>
-
-    @else
+    @empty
         <div class="text-center py-10 px-6 bg-white rounded-lg shadow-sm border">
             <p class="text-gray-600">Anda belum memiliki langganan.</p>
             <a href="{{ route('subscription') }}" wire:navigate
@@ -234,7 +173,7 @@
                 Mulai Berlangganan Sekarang
             </a>
         </div>
-    @endif
+    @endforelse
 
     <x-utils.modals.general-modal wire:model="showPauseModal" title="Jeda Langganan">
         <div class="space-y-4">
@@ -248,7 +187,7 @@
                     type="date"
                     id="pauseStartDate"
                     wire:model.live="pauseStartDate"
-                    min="{{ now()->format('Y-m-d') }}"
+                    min="{{ now()->format('Y-m-d') }}" {{-- TAMBAHKAN INI --}}
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                 @error('pauseStartDate') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
             </div>

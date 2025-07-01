@@ -16,6 +16,13 @@ class SubscriptionStatusHistoryModel extends Model
         'subscription_id',
         'status',
         'notes',
+        'pause_start_date',
+        'pause_end_date',
+    ];
+
+    protected $casts = [
+        'pause_start_date' => 'date',
+        'pause_end_date' => 'date',
     ];
 
     protected static function booted(): void

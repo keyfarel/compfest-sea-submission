@@ -69,4 +69,11 @@ class SubscriptionModel extends Model
     {
         return $this->hasOne(SubscriptionStatusHistoryModel::class, 'subscription_id')->latestOfMany();
     }
+
+    public function latestPauseHistory(): HasOne
+    {
+        return $this->hasOne(SubscriptionStatusHistoryModel::class, 'subscription_id')
+            ->where('status', 'dijeda')
+            ->latestOfMany();
+    }
 }

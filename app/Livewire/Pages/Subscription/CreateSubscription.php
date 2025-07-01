@@ -105,10 +105,11 @@ class CreateSubscription extends Component
     public function submit()
     {
         if (Auth::guest()) {
-            session()->flash('info', 'Anda harus login terlebih dahulu untuk berlangganan...');
+            session()->flash('info', 'Anda harus login terlebih dahulu untuk berlangganan. Redirecting now...');
+            $this->js("setTimeout(() => { Livewire.navigate('" . route('login') . "'); }, 2000);");
             return;
         }
-
+        
         if (Auth::user()->role_id == 1) {
             session()->flash('error', 'Maaf, Administrator tidak dapat melakukan subscribe.');
             return;
