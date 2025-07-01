@@ -16,13 +16,13 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone_number', 20)->nullable();
             $table->string('password');
-
-            // foreign key ke m_role
-            $table->foreignId('role_id')->constrained('m_role')->onDelete('cascade')->default(2);
-
+            $table->foreignId('role_id')->default(2)->constrained('m_role')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
+            $table->index('name');
+            $table->index('role_id');
         });
     }
 

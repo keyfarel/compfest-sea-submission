@@ -2,22 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-// Pastikan RoleModel juga berada di namespace yang sama atau di-import jika perlu
-// use App\Models\RoleModel;
 
 class UserModel extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     protected $table = 'm_user';
-
     protected $fillable = [
         'name',
         'email',
+        'phone_number',
         'password',
         'role_id',
     ];
@@ -35,5 +33,10 @@ class UserModel extends Authenticatable
     public function testimonials(): HasMany
     {
         return $this->hasMany(TestimonialModel::class, 'user_id');
+    }
+
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(SubscriptionModel::class, 'user_id');
     }
 }

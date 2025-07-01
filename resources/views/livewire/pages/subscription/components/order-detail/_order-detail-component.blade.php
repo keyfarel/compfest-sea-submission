@@ -1,8 +1,6 @@
 <div class="mt-8" wire:loading.class="opacity-50 transition-opacity">
     <div class="p-5 bg-green-50 border-l-4 border-green-500 rounded-r-lg">
         <h3 class="text-base font-semibold text-gray-800">Subscription Summary</h3>
-
-        {{-- Tampilkan rincian hanya jika ada paket yang dipilih dan harga total lebih dari 0 --}}
         @if($planName && $totalPrice > 0)
             <dl class="mt-4 space-y-2 text-sm text-gray-700">
                 {{-- Rincian Harga Paket --}}

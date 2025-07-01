@@ -13,10 +13,6 @@ class OrderDetail extends Component
     public $dayCount = 0;
     public $totalPrice = 0;
 
-    /**
-     * Listener untuk event 'summaryUpdated'.
-     * Menggunakan Atribut #[On] adalah cara modern dan lebih deklaratif.
-     */
     #[On('summaryUpdated')]
     public function updateSummary($data)
     {
